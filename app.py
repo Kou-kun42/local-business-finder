@@ -3,11 +3,20 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 from dotenv import load_dotenv
+from pprint import PrettyPrinter
+import requests
+import json
 import os
 
 # Setup
 
 app = Flask(__name__)
+
+load_dotenv()
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+
+pp = PrettyPrinter(indent=4)
 
 
 # Flask routes
@@ -35,9 +44,26 @@ def signup():
     '''Display signup page'''
     return render_template('signup.html')
 
+
 @app.route('/results')
-def signup():
+def results():
     '''Display result page'''
+    query = request.args.get("search-query")
+
+    url = "https://api.foursquare.com/v2/venues/explore"
+
+    params = {
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+        "query": query,
+        "near": "Chicago, IL",
+        "v": 20210201
+    }
+
+    results_json = requests.get(url, params=params).json()
+    # results = json.loads(results_json).get('response')
+    pp.pprint(results_json)
+
     return render_template('results.html')
 
 
