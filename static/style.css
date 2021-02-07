@@ -1,3 +1,221 @@
+/* ---- IMPORTS ---- */ 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200&display=swap');
+/* 
+font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+/*-- Body Reset --*/
 body {
-  margin: 0 auto;
+    overflow-x: hidden;
+    color: white;
+  }
+
+  h1{
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    color: rgb(34, 27, 19);
+  }
+  
+  
+  /*============= TOP BAR HEADER =============*/
+  .top-bar {
+    height: 2.8rem;
+    padding: 0.5rem 0;
+  }
+   
+  .top-bar a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  
+  /*============= NAVIGATION =============*/
+  .navbar {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    padding: 0.5rem;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    z-index:1;
+    border: none;
+  }
+  
+  .nav-item {
+    padding: 0.5rem 0;
+  }
+  
+  .nav-link {
+    color: black!important;
+  }
+  
+  .nav-link.active, .nav-link:hover{
+    color: #a0c6ff!important;
+  }
+  
+  .navbar-toggler {
+    color: black!important;
+  }
+
+  /*===== MAIN IMG =====*/
+  .fixed {
+    background-image: url(./images/main/bg1.png);
+    background-attachment: fixed;
+  }
+
+  .fixed-background {
+    padding: 10rem 0;
+  }
+
+  .fixed-background h1{
+    font-size: 3rem;
+  }
+  /*===== ABOUT =====*/
+  .about{ 
+    margin: 0 7rem 7rem 7rem!important;
+  }
+  .about .story{
+    color:black;
+    font-size: 1rem ;
+  }
+
+  .about b{
+    font-size: 1.5rem ;
+    font-weight: bold;
+  }
+/*============= SEARCH =============*/
+.search-content{
+  height: 100%;
+  padding: 7rem;
 }
+ .center {
+   margin: auto;
+ }
+ 
+ #header {
+   font-size: 3rem;
+ }
+
+/*============= FOOTER =============*/
+  footer{
+    background-color: black!important;
+    color: white;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  footer h3{
+      color: white;
+      font-size: 15px;
+      text-transform: uppercase;
+  }
+
+  footer p{
+      padding: 1rem;
+      text-transform: uppercase;
+  }
+
+  footer span{
+      color:#a0c6ff;
+  }
+
+  .github, .instagram{
+      color: white;
+      text-decoration: none;
+      padding: 1rem 1rem 0 1rem;
+  }
+
+
+  .github:hover, .instagram:hover{
+      color: #a0c6ff;
+  }
+
+
+
+
+
+  /*============= MEDIA QUERIES =============*/
+
+/* Devices under 1199px (xl) */
+@media (max-width: 1199.98px) {
+    .carousel-caption h1{
+      font-size: 2.8rem;
+    }
+    .carousel-caption h3{
+      font-size: 1.8rem;
+    }
+  
+  }
+  /* Devices under 992px (lg) */
+  @media (max-width: 991.98px) {
+    .carousel-caption h1{
+      font-size: 2.5rem;
+    }
+    .carousel-caption h3{
+      font-size: 1.5rem;
+    }
+    .bt-lg{
+      font-size: 0.95rem;
+    }
+  }
+  
+  
+  /*============ BOOTSTRAP BREAK POINTS:
+  
+  Extra small (xs) devices (portrait phones, less than 576px)
+  No media query since this is the default in Bootstrap
+  
+  Small (sm) devices (landscape phones, 576px and up)
+  @media (min-width: 576px) { ... }
+  
+  Medium (md) devices (tablets, 768px and up)
+  @media (min-width: 768px) { ... }
+  
+  Large (lg) devices (desktops, 992px and up)
+  @media (min-width: 992px) { ... }
+  
+  Extra (xl) large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) { ... }
+  
+  =============*/
+  
+  /*-- Bootstrap Mobile Gutter Fix --*/
+  .row, .container-fluid {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  
+  /*-- Fixed Background Image --*/
+  .fixed-background {
+    position: relative;
+    width: 100%;
+    z-index: 1000!important;
+  }
+  .fixed-wrap {
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -999 !important;
+  }
+  .fixed {
+    z-index: -999!important;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
