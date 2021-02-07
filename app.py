@@ -17,6 +17,10 @@ def home():
     '''Display homepage'''
     return render_template('home.html')
 
+@app.route('/results')
+def results():
+  "Display result cards"
+  return render_template('results.html')
 
 @app.route('/about')
 def about():
