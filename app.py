@@ -13,25 +13,25 @@ app = Flask(__name__)
 # Flask routes
 
 @app.route('/')
-def home_page():
+def home():
     '''Display homepage'''
     return render_template('home.html')
 
 
 @app.route('/about')
-def home_page():
+def about():
     '''Display about page'''
     return render_template('about.html')
 
 
 @app.route('/login')
-def home_page():
+def login():
     '''Display login page'''
     return render_template('login.html')
 
 
 @app.route('/signup')
-def home_page():
+def signup():
     '''Display signup page'''
     return render_template('signup.html')
 
