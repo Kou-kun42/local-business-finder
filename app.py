@@ -4,6 +4,8 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from pprint import PrettyPrinter
+import urllib.request
+import xml.etree.ElementTree as ET
 import requests
 import json
 import os
@@ -15,6 +17,7 @@ app = Flask(__name__)
 load_dotenv()
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+USERID = os.getenv('USERID')
 
 pp = PrettyPrinter(indent=4)
 
@@ -49,6 +52,30 @@ def signup():
 def results():
     '''Display result page'''
     query = request.args.get("search-query")
+    city = request.args.get("city")
+
+    # Looking up City and State using USPS api
+    usps_requestXML = f"""
+    <?xml version="1.0"?>
+    <CityStateLookupRequest USERID={USERID}>
+        <ZipCode ID= "0">
+            <Zip5>17404</Zip5>
+        </ZipCode>
+    </CityStateLookupRequest>
+    """
+
+    docString = usps_requestXML.replace(' ', '')
+    docString = urllib.parse.quote_plus(docString)
+
+    usps_url = """
+    http://production.shippingapis.com/ShippingAPITest.dll?API=
+    CityStateLookup&XML=""" + docString
+
+    usps_url = usps_url.replace('\n', '').replace(' ', '')
+
+    response = urllib.request.urlopen(usps_url)
+    contents = response.read()
+    print(contents)
 
     url = "https://api.foursquare.com/v2/venues/explore"
 
@@ -61,8 +88,7 @@ def results():
     }
 
     results_json = requests.get(url, params=params).json()
-    # results = json.loads(results_json).get('response')
-    pp.pprint(results_json)
+    # pp.pprint(results_json)
 
     return render_template('results.html')
 
