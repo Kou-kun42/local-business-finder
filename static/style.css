@@ -4,11 +4,10 @@
 font-family: 'Playfair Display', serif;
 font-family: 'Poppins', sans-serif;
 */
-
 /*-- Body Reset --*/
 body {
   overflow-x: hidden;
-  color: white;
+  background: white;
 }
 
 h1 {
@@ -84,17 +83,6 @@ h1 {
   font-weight: bold;
 }
 /*============= SEARCH =============*/
-.search-content {
-  height: 100%;
-  padding: 7rem;
-}
-.center {
-  margin: auto;
-}
-
-#header {
-  font-size: 3rem;
-}
 
 /*============= FOOTER =============*/
 footer {
