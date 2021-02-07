@@ -35,6 +35,11 @@ def signup():
     '''Display signup page'''
     return render_template('signup.html')
 
+@app.route('/results')
+def signup():
+    '''Display result page'''
+    return render_template('results.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
