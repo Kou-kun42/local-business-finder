@@ -1,28 +1,23 @@
-{% extends 'base.html' %} {% block content %}
-<!-- MAIN CONTENT -->
-<div class="fixed-background">
-  <div class="row text-light py-2">
-    <div class="col-12 text-center">
-      <img
-        class="p-2"
-        src="{{url_for('static', filename='Logo.png')}}"
-        alt="Logo"
-        width="150"
-        ,
-        height="150"
-      />
-      <h1>Proxcity</h1>
-      <h4 class="py-4">Search for your local service here!</h4>
-      <form action="/results">
-        <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
-          <input
-            id="search-box"
-            name="search-query"
-            type="text"
-            class="form-control"
-            placeholder="Search Local Businesses!"
-          />
-          <button id="search" class="btn btn-primary" onclick="">Search</button>
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- MAIN CONTENT -->
+    <div class="fixed-background">
+        <div class="row text-light py-2">
+            <div class="col-12 text-center">
+                    <img class="p-2" src="{{url_for('static', filename='Logo.png')}}" alt="Logo" width="150", height="150">
+                    <h1>Proxcity</h1>
+                    <h4 class="py-4">Search for your local service here!</h4>
+                    <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
+                        <input id="search-box" name="search-query" type="text" class="form-control" placeholder="Search Local Businesses!">
+                        <a href=results><button id="search" class="btn btn-primary">Search</button></a>
+                        
+                    </div>
+            </div>
+        </div>
+    
+        <div class="fixed-wrap">
+            <div class="fixed"></div>
         </div>
       </form>
     </div>
