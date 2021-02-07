@@ -3,21 +3,19 @@
   <div class="container py-4">
     
     <!-- Search bar, exactly the same as from home.html -->
-    <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12 mb-4">
-      <input
-        id="search-box"
-        name="search-query"
-        type="text"
-        class="form-control"
-        placeholder="Search Local Businesses!"
-      />
-      <a href="results"
-        ><button id="search" class="btn btn-primary">Search</button></a
-      >
+    <div class="input-group mx-auto col-lg-6 col-md-8 col-sm-12 mb-4">
+        <form action="/results">
+            <div id="input" class="input-group mx-auto col-lg-6 col-md-8 col-sm-12">
+              <input id="search-box" name="search-query" type="text" class="form-control"
+                placeholder="Search Local Businesses!">
+              <input id="search" type="submit" class="btn btn-primary" value="Search">
+    
+            </div>
+          </form>
     </div>
 
     <!-- For loop happens here -->
-    
+    {% for result in results.response.venues %}
 
     <!-- Replace your the response info here -->
     <div class="card mb-3 py-4 shadow">
@@ -34,11 +32,11 @@
         <div class="col-md-8">
           <div class="card-body">
             <!-- Replace Card Title  -->
-            <h5 class="card-title">example</h5>
+            <h5 class="card-title">{{result.name}}</h5>
             <!-- Replace Card Address -->
             <p class="card-text">
               <small class="text-muted"
-                >example</small
+                >{{result.location.address}}</small
               >
             </p>
             <!-- Replace Card Description -->
@@ -49,7 +47,7 @@
         </div>
       </div>
     </div> 
-    
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

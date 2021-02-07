@@ -51,7 +51,7 @@ def signup():
 def results():
     '''Display result page'''
     query = request.args.get("search-query")
-
+    print(query)
     url = "https://api.foursquare.com/v2/venues/search"
 
     params = {
@@ -65,7 +65,7 @@ def results():
 
     results_json = requests.get(url, params=params).json()
     # results = json.loads(results_json).get('response')
-    pp.pprint(results_json)
+    # pp.pprint(results_json)
     context = {
         'results' : results_json
     }
