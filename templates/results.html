@@ -1,1 +1,8 @@
-{% extends 'base.html' %} Results Template {% block content %} {% endblock %}
+{% extends 'base.html' %} Results Template 
+{% block content %} 
+{% if results %}
+{% for result in results.response.venues %}
+<p> {{ result.name }}</p>
+{% endfor %}
+{% endif %}
+{% endblock %}

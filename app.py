@@ -50,21 +50,24 @@ def results():
     '''Display result page'''
     query = request.args.get("search-query")
 
-    url = "https://api.foursquare.com/v2/venues/explore"
+    url = "https://api.foursquare.com/v2/venues/search"
 
     params = {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
         "query": query,
         "near": "Chicago, IL",
-        "v": 20210201
+        "v": 20210201,
+        "limit": 2
     }
 
     results_json = requests.get(url, params=params).json()
     # results = json.loads(results_json).get('response')
     pp.pprint(results_json)
-
-    return render_template('results.html')
+    context = {
+        'results' : results_json
+    }
+    return render_template('results.html', results = results_json)
 
 
 if __name__ == '__main__':
