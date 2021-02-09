@@ -62,7 +62,7 @@ def results():
     location = f"{city}, {state}"
 
     # Foursquare places api url
-    url = "https://api.foursquare.com/v2/venues/explore"
+    url = "https://api.foursquare.com/v2/venues/search"
 
     # Parameters for the venues api
     params = {
@@ -70,12 +70,15 @@ def results():
         "client_secret": CLIENT_SECRET,
         "query": query,
         "near": location,
-        "v": 20210201
+        "v": 20210201,
+        "limit": 5
     }
 
     results_json = requests.get(url, params=params).json()
-
-    return render_template('results.html')
+    context = {
+        'results': results_json
+    }
+    return render_template('results.html', results=results_json)
 
 
 if __name__ == '__main__':
