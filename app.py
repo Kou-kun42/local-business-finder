@@ -15,7 +15,6 @@ app = Flask(__name__)
 load_dotenv()
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
-USERID = os.getenv('USERID')
 
 pp = PrettyPrinter(indent=4)
 
