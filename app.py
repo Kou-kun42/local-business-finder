@@ -51,7 +51,7 @@ def results():
     '''Display result page'''
     query = request.args.get("search-query")
     city = request.args.get("city")
-    zipcode = 19104
+    zipcode = request.args.get("zipcode")
 
     # Looking up City and State using Ziptastic api
     zipurl = "http://ZiptasticAPI.com/" + str(zipcode)
