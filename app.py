@@ -4,8 +4,6 @@ from bson.objectid import ObjectId
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from pprint import PrettyPrinter
-import urllib.request
-import xml.etree.ElementTree as ET
 import requests
 import json
 import os
@@ -53,42 +51,29 @@ def results():
     '''Display result page'''
     query = request.args.get("search-query")
     city = request.args.get("city")
+    zipcode = 19104
 
-    # Looking up City and State using USPS api
-    usps_requestXML = f"""
-    <?xml version="1.0"?>
-    <CityStateLookupRequest USERID={USERID}>
-        <ZipCode ID= "0">
-            <Zip5>17404</Zip5>
-        </ZipCode>
-    </CityStateLookupRequest>
-    """
+    # Looking up City and State using Ziptastic api
+    zipurl = "http://ZiptasticAPI.com/" + str(zipcode)
+    zip_json = requests.get(zipurl).json()
+    # Getting city and state from result json
+    city = zip_json["city"]
+    state = zip_json["state"]
+    location = f"{city}, {state}"
 
-    docString = usps_requestXML.replace(' ', '')
-    docString = urllib.parse.quote_plus(docString)
-
-    usps_url = """
-    http://production.shippingapis.com/ShippingAPITest.dll?API=
-    CityStateLookup&XML=""" + docString
-
-    usps_url = usps_url.replace('\n', '').replace(' ', '')
-
-    response = urllib.request.urlopen(usps_url)
-    contents = response.read()
-    print(contents)
-
+    # Foursquare places api url
     url = "https://api.foursquare.com/v2/venues/explore"
 
+    # Parameters for the venues api
     params = {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
         "query": query,
-        "near": "Chicago, IL",
+        "near": location,
         "v": 20210201
     }
 
     results_json = requests.get(url, params=params).json()
-    # pp.pprint(results_json)
 
     return render_template('results.html')
 
