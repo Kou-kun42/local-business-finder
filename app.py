@@ -74,7 +74,6 @@ def results():
     }
 
     results_json = requests.get(url, params=params).json()
-    pp.pprint(results_json)
     context = {
         'results': results_json
     }

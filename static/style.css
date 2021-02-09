@@ -202,3 +202,8 @@ footer span {
   transform: translateZ(0);
   will-change: transform;
 }
+
+/*============= RESULTS CARDS =============*/
+.card-title {
+  color: #1a1a1a;
+}
