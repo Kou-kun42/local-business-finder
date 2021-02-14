@@ -62,8 +62,6 @@ def results():
 
     # Foursquare places api url
     url = "https://api.foursquare.com/v2/venues/search"
-    #photo_url = f"https://api.foursquare.com/v2/venues/{VENUE_ID}/photos"
-    #description_url = f"https://api.foursquare.com/v2/venues/{VENUE_ID}"
     # Parameters for the venues api
     params = {
         "client_id": CLIENT_ID,
@@ -71,37 +69,47 @@ def results():
         "query": query,
         "near": location,
         "v": 20210201,
-        "limit": 3
+        "limit": 4
     }
     
     results_json = requests.get(url, params=params).json()
-    print('----------------')
-    #pp.pprint(results_json)
-    pp.pprint(results_json['response']['venues'][0]['id'])
-    print('---------------')
-    venue_id = results_json['response']['venues'][0]['id']
-    print(venue_id)
+
+    venue_ids = []
+    for venue in results_json['response']['venues']:
+        venue_ids.append(venue['id'])
+
     photo_params = {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
         "v": 20210201,
         'limit' : 1
     }
-    photo_url = f"https://api.foursquare.com/v2/venues/{venue_id}/photos"
-    description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
-    description_results_json = requests.get(description_url, params=photo_params).json()
-    pp.pprint(description_results_json)
-    photo_results_json = requests.get(photo_url, params=photo_params).json()
+
+    descriptions = []
+    photos = []
     photo_prefix = 'https://fastly.4sqi.net/img/general/300x300'
+    for venue_id in venue_ids:
+        description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
+        description_results = requests.get(description_url, params=photo_params).json()
+        pp.pprint(description_results)
+        try:
+            description = description_results['response']['venue']['description']
+        except:
+            description = "No Description Given"
+        descriptions.append(description)
+        try:
+            photo = photo_prefix + description_results['response']['venue']['bestPhoto']['suffix']
+        except:
+            photo = url_for('static', filename='Logo.png')
+        photos.append(photo)
+
+    
     context = {   
-        'results': results_json,
-        'photos' : photo_results_json,
-        'img_path' : photo_prefix + photo_results_json['response']['photos']['items'][0]['suffix'],
-        'desc': description_results_json
+        'results': results_json['response']['venues'],
+        'num_venues': len(results_json['response']['venues']),
+        'photos': photos,
+        'desc': descriptions
     }
-    print('----------------')
-    pp.pprint(photo_results_json)
-    print('---------------')
     return render_template('results.html', **context)
 
 
