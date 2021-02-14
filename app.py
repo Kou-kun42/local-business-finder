@@ -63,6 +63,7 @@ def results():
     # Foursquare places api url
     url = "https://api.foursquare.com/v2/venues/search"
     #photo_url = f"https://api.foursquare.com/v2/venues/{VENUE_ID}/photos"
+    #description_url = f"https://api.foursquare.com/v2/venues/{VENUE_ID}"
     # Parameters for the venues api
     params = {
         "client_id": CLIENT_ID,
@@ -87,12 +88,16 @@ def results():
         'limit' : 1
     }
     photo_url = f"https://api.foursquare.com/v2/venues/{venue_id}/photos"
+    description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
+    description_results_json = requests.get(description_url, params=photo_params).json()
+    pp.pprint(description_results_json)
     photo_results_json = requests.get(photo_url, params=photo_params).json()
     photo_prefix = 'https://fastly.4sqi.net/img/general/300x300'
     context = {   
         'results': results_json,
         'photos' : photo_results_json,
-        'img_path' : photo_prefix + photo_results_json['response']['photos']['items'][0]['suffix']
+        'img_path' : photo_prefix + photo_results_json['response']['photos']['items'][0]['suffix'],
+        'desc': description_results_json
     }
     print('----------------')
     pp.pprint(photo_results_json)
