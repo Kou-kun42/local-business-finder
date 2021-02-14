@@ -94,8 +94,10 @@ def results():
         description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
         description_results = requests.get(description_url, params=desc_params).json()
         pp.pprint(description_results)
+        # Tries to get picture and description
         try:
             description = description_results['response']['venue']['description']
+        # Uses a placeholder if info does not exist
         except:
             description = "No Description Given"
         descriptions.append(description)
