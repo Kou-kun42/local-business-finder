@@ -73,24 +73,26 @@ def results():
     }
     
     results_json = requests.get(url, params=params).json()
+    results = results_json['response']['venues']
 
+    # Gets venue ids for additional info
     venue_ids = []
     for venue in results_json['response']['venues']:
         venue_ids.append(venue['id'])
 
-    photo_params = {
+    desc_params = {
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET,
-        "v": 20210201,
-        'limit' : 1
+        "v": 20210201
     }
 
+    # Gets picture and description of each location
     descriptions = []
     photos = []
     photo_prefix = 'https://fastly.4sqi.net/img/general/300x300'
     for venue_id in venue_ids:
         description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
-        description_results = requests.get(description_url, params=photo_params).json()
+        description_results = requests.get(description_url, params=desc_params).json()
         pp.pprint(description_results)
         try:
             description = description_results['response']['venue']['description']
@@ -105,8 +107,8 @@ def results():
 
     
     context = {   
-        'results': results_json['response']['venues'],
-        'num_venues': len(results_json['response']['venues']),
+        'results': results,
+        'num_venues': len(results),
         'photos': photos,
         'desc': descriptions
     }
