@@ -62,7 +62,7 @@ def results():
 
     # Foursquare places api url
     url = "https://api.foursquare.com/v2/venues/search"
-
+    photo_url = "https://api.foursquare.com/v2/venues/VENUE_ID/photos"
     # Parameters for the venues api
     params = {
         "client_id": CLIENT_ID,
@@ -70,14 +70,32 @@ def results():
         "query": query,
         "near": location,
         "v": 20210201,
-        "limit": 5
+        "limit": 3
     }
-
+    
     results_json = requests.get(url, params=params).json()
-    context = {
-        'results': results_json
+    print('----------------')
+    pp.pprint(results_json)
+    pp.pprint(results_json['response']['venues'][0]['id'])
+    print('---------------')
+    venue_id = results_json['response']['venues'][0]['id']
+    print(venue_id)
+    photo_params = {
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET,
+        "v": 20210201,
+        'VENUE_ID' : venue_id,
+        'limit' : 1
     }
-    return render_template('results.html', results=results_json)
+    photo_results_json = requests.get(photo_url, params=photo_params).json()
+    context = {   
+        'results': results_json,
+        'photos' : photo_results_json
+    }
+    print('----------------')
+    pp.pprint(photo_results_json)
+    print('---------------')
+    return render_template('results.html', results=results_json, photos='photos')
 
 
 if __name__ == '__main__':
