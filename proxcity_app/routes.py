@@ -40,7 +40,7 @@ auth = Blueprint("auth", __name__)
 @app.before_request
 def before_request():
     session.permanent = True
-    app.permanent_session_lifetime = datetime.timedelta(seconds=10)
+    app.permanent_session_lifetime = datetime.timedelta(seconds=120)
     session.modified = True
 
 
