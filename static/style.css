@@ -1,8 +1,8 @@
 /* ---- IMPORTS ---- */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Slab:wght@300&display=swap');
 /* 
-font-family: 'Playfair Display', serif;
-font-family: 'Poppins', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto Slab', serif;
 */
 /*-- Body Reset --*/
 body {
@@ -11,9 +11,8 @@ body {
 }
 
 h1 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
-  color: rgb(34, 27, 19);
 }
 
 /*============= TOP BAR HEADER =============*/
@@ -34,41 +33,79 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.1rem;
   padding: 0.5rem;
-  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   z-index: 1;
   border: none;
+  background-image: linear-gradient(to right, #54a7ff, #5331ff);
 }
 
-.nav-item {
+.nav-item a{
   padding: 0.5rem 0;
+  color: white!important;
 }
 
-.nav-link {
-  color: black !important;
-}
-
-.nav-link.active,
-.nav-link:hover {
-  color: #a0c6ff !important;
+.nav-item.active,
+.nav-item:hover {
+  color: #54a7ff !important;
 }
 
 .navbar-toggler {
-  color: black !important;
+  color: white!important;
 }
 
-/*===== MAIN IMG =====*/
-.fixed {
-  background-image: url(./images/main/city.jpg);
-  background-attachment: fixed;
+/*===== MAIN CONTENT =====*/
+.banner{
+  background-image: linear-gradient(to right, #54a7ff, #5331ff);
+  color: white;
+  padding-top: 5%;
 }
 
-.fixed-background {
-  padding: 10rem 0;
-}
-
-.fixed-background h1 {
+.banner h1{
+  font-family: 'Roboto Slab', serif!important;
+  color: white;
   font-size: 3rem;
 }
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+  padding-top: 5%;
+}
+
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+
 /*===== ABOUT =====*/
 .about {
   margin: 0 7rem 7rem 7rem !important;
@@ -128,23 +165,16 @@ footer span {
 
 /* Devices under 1199px (xl) */
 @media (max-width: 1199.98px) {
-  .carousel-caption h1 {
-    font-size: 2.8rem;
-  }
-  .carousel-caption h3 {
-    font-size: 1.8rem;
+  .waves {
+    height: 100px;
+    min-height: 100px;
   }
 }
 /* Devices under 992px (lg) */
 @media (max-width: 991.98px) {
-  .carousel-caption h1 {
-    font-size: 2.5rem;
-  }
-  .carousel-caption h3 {
-    font-size: 1.5rem;
-  }
-  .bt-lg {
-    font-size: 0.95rem;
+  .waves {
+    height:40px;
+    min-height:40px;
   }
 }
 

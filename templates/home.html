@@ -1,48 +1,42 @@
 {% extends 'base.html' %} {% block content %}
 <!-- MAIN CONTENT -->
-<div class="fixed-background">
-  <div class="row text-light py-2">
-    <div class="col-12 text-center">
-      <img
-        class="p-2"
-        src="{{url_for('static', filename='Logo.png')}}"
-        alt="Logo"
-        width="150"
-        ,
-        height="150"
-      />
-      <h1>Proxcity</h1>
-      <h4 class="py-4">Search for your local service here!</h4>
-      <div class="container">
-        <form class="row mx-auto" action="/results">
-          <input
-            id="search-box"
-            name="search-query"
-            type="text"
-            class="form-control col-8"
-            placeholder="Search Local Businesses!"
-          />
-          <input
-            id="zip-box"
-            name="zipcode"
-            type="text"
-            pattern="[0-9]{5}"
-            class="form-control col-2"
-            placeholder="Zipcode"
-          />
-          <input
-            id="search"
-            type="submit"
-            class="btn btn-primary"
-            value="Search"
-          />
-        </form>
+<section class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <img class="p-2" src="{{url_for('static', filename='Logo.png')}}" alt="Logo" width="150", height="150">
+        <h1>Proxcity</h1>
+        <h4 class="py-4">Search for your local service here!</h4>
+        
+        <div class="container">
+          <form class="row mx-auto" action="/results">
+            <input id="search-box" name="search-query" type="text" class="form-control col-8" placeholder="Search Local Businesses!"/>
+            <input id="zip-box" name="zipcode" type="text" pattern="[0-9]{5}" class="form-control col-2" placeholder="Zipcode"/>
+            <input id="search" type="submit" class="btn btn-primary" value="Search"/>
+          </form>
+        </div>
+
       </div>
     </div>
   </div>
-  <div class="fixed-wrap">
-    <div class="fixed"></div>
-  </div>
+  <!--Waves Container-->
+  <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+    </g>
+    </svg>
+    </div>
+  <!--Waves end-->
+
+</section>
   <!-- End Main Content -->
   {% endblock %}
 </div>
