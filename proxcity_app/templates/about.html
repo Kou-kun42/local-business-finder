@@ -1,33 +1,38 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <main>
-    <!-- ABOUT US -->
-    <div id="about">
-        <div class="container text-center">
-            <h1 class="title">About Us</h1>
-            <div class="row">
-                <div class="col-md-4 d-flex justify-content-center align-items-center">
-                    <p class="story m-2">
-                        <img class="p-2" src="{{url_for('static', filename='Logo.png')}}" alt="Logo" width="150", height="150">
-                        <br><br>
-                        A simple and easy way to find local businesses!
-                        <br><br>
-                        During the covid pandemic, small/medium local businesses suffered greatly. 
-                        So we thought, we don't we make it easier for them to get noticed.
-                        We think that this project will help those businesses market their name and improve their revenue!
-                        The community then thrives and becomes less dependant on outside sources.
-                    </p>
-                </div>
-
-                <div class="col-md-8">
-                    <img src="/static/about.jpg" alt="" class="w-100">
-                </div>
-
-            </div>
+  <!-- ABOUT US -->
+  <div id="about">
+    <div class="container text-center">
+      <h1 class="title">About Us</h1>
+      <div class="row">
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <p class="story m-2">
+            <img
+              class="p-2"
+              src="{{url_for('static', filename='Logo.png')}}"
+              alt="Logo"
+              width="150"
+              ,
+              height="150"
+            />
+            <br /><br />
+            A simple and easy way to find local businesses!
+            <br /><br />
+            During the covid pandemic, small/medium local businesses suffered
+            greatly. So we thought, we don't we make it easier for them to get
+            noticed. We think that this project will help those businesses
+            market their name and improve their revenue! The community then
+            thrives and becomes less dependant on outside sources.
+          </p>
         </div>
+
+        <div class="col-md-8">
+          <img src="/static/about.jpg" alt="" class="w-100" />
+        </div>
+      </div>
     </div>
-    <!-- End Abous Us -->
+  </div>
+  <!-- End Abous Us -->
 </main>
 {% endblock %}
