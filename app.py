@@ -44,6 +44,11 @@ def signup():
     '''Display signup page'''
     return render_template('signup.html')
 
+@app.route('/user')
+def user():
+    '''Display User Page'''
+    return render_template('user.html')
+
 
 @app.route('/results')
 def results():
