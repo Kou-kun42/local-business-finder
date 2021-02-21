@@ -69,7 +69,7 @@ def results():
         "query": query,
         "near": location,
         "v": 20210201,
-        "limit": 4
+        "limit": 1
     }
     
     results_json = requests.get(url, params=params).json()

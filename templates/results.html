@@ -1,9 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 <div id="form_results">
-  <div class="container">
+  <div class="container p-5">
     <div class="row">
       <div class="col-12 text-center">
-        <div class="container m-4">
+        <img class="p-2" src="{{url_for('static', filename='Logo.png')}}" alt="Logo" width="150", height="150">
+        <div class="container p-5">
           <form class="row mx-auto" action="/results">
             <input id="search-box" name="search-query" type="text" class="form-control col-8" placeholder="Search Local Businesses!"/>
             <input id="zip-box" name="zipcode" type="text" pattern="[0-9]{5}" class="form-control col-2" placeholder="Zipcode"/>
@@ -12,32 +13,36 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 
-    <!-- For loop happens here -->
-    {% for i in range(num_venues) %}
-    <!-- Replace your the response info here -->
-    <div class="card mb-3 py-4 shadow">
-      <div class="row no-gutters">
-        <div class="col-md-2 text-center">
-          <!-- Replace url img here -->
-          <img src="{{photos[i]}}" width="150" , height="150" />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <!-- Replace Card Title  -->
-            <h5 class="card-title">{{results[i].name}}</h5>
-            <!-- Replace Card Address -->
-            <p class="card-text">
-              <small class="text-muted">{{results[i].location.address}}</small>
-            </p>
-            <!-- Replace Card Description -->
-            <p class="card-text">{{desc[i]}}</p>
+
+    <div class="row">
+      <div class="col-md-12">
+        {% for i in range(num_venues) %}
+        <!-- Responses Start -->
+        <div class="card mb-3 py-4 shadow">
+          <div class="row p-1">
+            <!-- card image -->
+            <div class="col-md-2 text-center">
+              <img class="p-2" src="{{photos[i]}}" width="150",height="150">
+            </div>
+            <!-- card body -->
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{results[i].name}}</h5>
+                <p class="card-text">
+                  <small class="text-muted">{{results[i].location.address}}</small>
+                </p>
+                <p class="card-text">{{desc[i]}}</p>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- Responses End -->
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
+
   </div>
 </div>
 {% endblock %}
