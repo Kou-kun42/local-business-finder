@@ -223,7 +223,6 @@ def login():
             return redirect(url_for('auth.login'))
 
         user = mongo.db.users.find_one({'email': email})
-        print(user)
 
         # If the user is not found in the database
         if user is None:
@@ -231,7 +230,7 @@ def login():
             return redirect(url_for('auth.signup'))
 
         # If the passwords do not match
-        if bcrypt.check_password_hash(user['password'], password):
+        if not bcrypt.check_password_hash(user['password'], password):
             flash('ERROR: Password is incorrect')
             return redirect(url_for('auth.login'))
 
