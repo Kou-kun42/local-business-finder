@@ -47,9 +47,11 @@ h1 {
   background-image: linear-gradient(to right, #54a7ff, #5331ff);
 }
 
-.nav-item a{
-  padding: 0.5rem 0;
+.navbar-nav li a{
   color: white!important;
+  font-weight: 600px;
+  float: right;
+  text-align: left;
 }
 
 .nav-item.active,
@@ -82,12 +84,13 @@ h1 {
 .waves {
   position:relative;
   width: 100%;
-  height:15vh;
+  height:18vh;
   margin-bottom:-7px; /*Fix for safari gap*/
   min-height:100px;
   max-height:150px;
-  padding-top: 5%;
 }
+
+
 /* Animation */
 
 .parallax > use {
@@ -117,6 +120,18 @@ h1 {
     transform: translate3d(85px,0,0);
   }
 }
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+
+  h1 {
+    font-size:24px;
+  }
+}
+
 
 /*------ Services Section ------*/
 
@@ -286,6 +301,3 @@ footer span {
 }
 
 /*============= RESULTS CARDS =============*/
-.card-title {
-  color: #1a1a1a;
-}
