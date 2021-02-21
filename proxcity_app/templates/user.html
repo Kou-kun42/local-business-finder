@@ -10,11 +10,11 @@
           <i class="fa fa-user-circle fa-10x"></i>
           <div class="user_info">
             <br />
-            <h1>Sree C.</h1>
+            <h1>{{ user.name }}</h1>
             <p>
-              @sreenvitha.chikati@students.makeschool.com
+              {{ user.email }}
               <br />
-              <span>Locations Saved: 1</span>
+              <span>Locations Saved: {{ favourites | length }}</span>
             </p>
           </div>
         </div>
