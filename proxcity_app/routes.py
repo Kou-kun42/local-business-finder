@@ -64,9 +64,17 @@ def about():
 def user():
     '''Display User Page'''
     if 'email' in session:
+        user = mongo.db.users.find_one({ 'email': session['email'] })
+
         if request.method == "GET":
-            # Query to pull favorites and user data from db
-            return render_template('user.html')
+            # Query the db for favorites and user data
+            favorites = list(mongo.db.favorites.find({ 'user_id': user['_id'] }))
+            print(favorites)
+            context = {
+              'user': user,
+              'favorites': favorites
+            }
+            return render_template('user.html', **context)
         else:
             # Add new favorite to user in db and display user page
             context = {
