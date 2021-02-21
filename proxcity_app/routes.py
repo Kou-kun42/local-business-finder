@@ -60,22 +60,25 @@ def about():
     return render_template('about.html')
 
 
-@main.route('/login')
-def login():
-    '''Display login page'''
-    return render_template('login.html')
-
-
-@main.route('/signup')
-def signup():
-    '''Display signup page'''
-    return render_template('signup.html')
-
-
-@main.route('/user')
+@main.route('/user', methods=["GET", "POST"])
 def user():
     '''Display User Page'''
-    return render_template('user.html')
+    if 'email' in session:
+        if request.method == "GET":
+            # Query to pull favorites and user data from db
+            return render_template('user.html')
+        else:
+            # Add new favorite to user in db and display user page
+            context = {
+                "new_fav_name": request.form.get("name"),
+                "new_fav_address": request.form.get("address"),
+                "new_fav_desc": request.form.get("description"),
+                "new_fav_photo": request.form.get("photo_path")
+            }
+            # DONT FORGET CONTEXT
+            return render_template('user.html')
+    else:
+        return redirect(url_for('main.signup'))
 
 
 @main.route('/results')
