@@ -8,11 +8,11 @@
         <h1>Proxcity</h1>
         <h4 class="py-4">Search for your local service here!</h4>
         
-        <div class="container">
+        <div class="container m-4">
           <form class="row mx-auto" action="/results">
             <input id="search-box" name="search-query" type="text" class="form-control col-8" placeholder="Search Local Businesses!"/>
             <input id="zip-box" name="zipcode" type="text" pattern="[0-9]{5}" class="form-control col-2" placeholder="Zipcode"/>
-            <input id="search" type="submit" class="btn btn-primary" value="Search"/>
+            <input id="submit" type="submit" class="btn btn-primary" value="Search"/>
           </form>
         </div>
 
@@ -37,6 +37,47 @@
   <!--Waves end-->
 
 </section>
-  <!-- End Main Content -->
+<!-- End Main Content -->
+
+<!-- Three Column Section -->
+<section id="services">
+  <div class="container text-center">
+    <h1 class="title">OUR SERVICES</h1>
+    <div class="row text-center">
+  
+      <div class="col-md-4 my-2 services" data-aos="zoom-in">
+        <img src="/static/search.jpg" alt="" class="service-img w-75">
+        <h4 class="my-4">Find</h4>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+           Rerum sed tempore at vitae repudiandae in enim eum numquam 
+           nostrum quaerat saepe, eos facilis id eveniet, delectus 
+           magni! Qui, cum exercitationem?</p>
+      </div>
+  
+      <div class="col-md-4 my-2 services" data-aos="zoom-in">
+        <img src="/static/help.jpg" alt="" class="service-img w-75">
+        <h4 class="my-4">Help</h4>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+           Rerum sed tempore at vitae repudiandae in enim eum numquam 
+           nostrum quaerat saepe, eos facilis id eveniet, delectus 
+           magni! Qui, cum exercitationem?</p>
+      </div>
+  
+      <div class="col-md-4 my-2 services" data-aos="zoom-in">
+        <img src="/static/save.jpg" alt="" class="service-img w-75">
+        <h4 class="my-4">Save</h4>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+           Rerum sed tempore at vitae repudiandae in enim eum numquam 
+           nostrum quaerat saepe, eos facilis id eveniet, delectus 
+           magni! Qui, cum exercitationem?</p>
+      </div>
+    </div>
+    <a href="{{ url_for('login') }}" class="btn btn-primary btn-md">Get Started</a>
+  </div>
+</section>
+
+<!-- End Three Column Section -->
+
+
   {% endblock %}
 </div>

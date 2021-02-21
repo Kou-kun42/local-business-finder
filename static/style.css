@@ -13,6 +13,16 @@ body {
 h1 {
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
+  font-family: 'Roboto Slab', serif!important;
+}
+
+.btn-primary{
+  box-shadow: none;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #54ffac, #54a7ff);
+  color: black;
 }
 
 /*============= TOP BAR HEADER =============*/
@@ -53,6 +63,8 @@ h1 {
 }
 
 /*===== MAIN CONTENT =====*/
+
+/*------ Banner Section ------*/
 .banner{
   background-image: linear-gradient(to right, #54a7ff, #5331ff);
   color: white;
@@ -60,9 +72,12 @@ h1 {
 }
 
 .banner h1{
-  font-family: 'Roboto Slab', serif!important;
   color: white;
   font-size: 3rem;
+}
+
+.banner h4{
+  color: white;
 }
 
 .waves {
@@ -74,8 +89,6 @@ h1 {
   max-height:150px;
   padding-top: 5%;
 }
-
-
 /* Animation */
 
 .parallax > use {
@@ -104,6 +117,48 @@ h1 {
   100% { 
     transform: translate3d(85px,0,0);
   }
+}
+
+/*------ Services Section ------*/
+
+#services {
+  padding: 80px 0;
+}
+
+.services-img {
+  margin-top: 20px;
+}
+
+.services {
+  padding: 20px;
+}
+
+.services h4{
+  padding: 5px;
+  margin-top: 25px;
+}
+
+.title::before {
+  content: '';
+  background-color: #54ffac;
+  height: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transform: translateY(63px);
+}
+
+.title::after {
+  content: '';
+  background-color: #54ffac;
+  height: 10px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: block;
+  transform: translateY(18px);
 }
 
 /*===== ABOUT =====*/
