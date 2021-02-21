@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/static/Logo2.png">
 
   <title>ProxCity</title>
 
@@ -14,11 +15,13 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
   <!-- CUSTOM STYLES -->
   <link rel="stylesheet" href="/static/style.css">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 
 <body>
   <!--  HOME NAV BAR -->
-  <nav class="navbar bg-light navbar-dark navbar-expand-lg navbar-fixed-top">
+  <nav class="navbar bg-light navbar-dark navbar-expand-lg">
     <div class="container">
       <a href="/" class="navbar-brand">
         <img src="{{url_for('static', filename='Logo2.png')}}" alt="" width="75", height="75">
@@ -82,6 +85,16 @@
   </footer>
   <!-- End Footer -->
 
+<!-- AOS EFFECTS INITIALIZATION -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        duration: 750,
+        offset: 120,
+        easing: 'ease-in-out'
+    });
+</script>
 <!-- SCRIPT FOR FONT AWESOME -->
 <script src="https://kit.fontawesome.com/2cf12949d8.js" crossorigin="anonymous"></script>
 <!-- jQuery first-->
