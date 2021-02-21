@@ -88,7 +88,7 @@ def user():
 
             return redirect(url_for('main.user'))
     else:
-        return redirect(url_for('main.signup'))
+        return redirect(url_for('auth.login'))
 
 
 @main.route('/results')
