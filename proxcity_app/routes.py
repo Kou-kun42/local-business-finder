@@ -77,14 +77,16 @@ def user():
             return render_template('user.html', **context)
         else:
             # Add new favorite to user in db and display user page
-            context = {
-                "new_fav_name": request.form.get("name"),
-                "new_fav_address": request.form.get("address"),
-                "new_fav_desc": request.form.get("description"),
-                "new_fav_photo": request.form.get("photo_path")
+            favorite = {
+               'name': request.form.get("name"),
+               'address': request.form.get('address'),
+               'description': request.form.get('description'),
+               'photo_path': request.form.get('photo_path'),
+               'user_id': user['_id']
             }
-            # DONT FORGET CONTEXT
-            return render_template('user.html')
+            mongo.db.favorites.insert_one(favorite)
+
+            return redirect(url_for('main.user'))
     else:
         return redirect(url_for('main.signup'))
 
