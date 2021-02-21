@@ -60,18 +60,6 @@ def about():
     return render_template('about.html')
 
 
-@main.route('/login')
-def login():
-    '''Display login page'''
-    return render_template('login.html')
-
-
-@main.route('/signup')
-def signup():
-    '''Display signup page'''
-    return render_template('signup.html')
-
-
 @main.route('/user')
 def user():
     '''Display User Page'''
