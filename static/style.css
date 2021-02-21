@@ -11,7 +11,6 @@ body {
 }
 
 h1 {
-  font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   font-family: 'Roboto Slab', serif!important;
 }
@@ -162,19 +161,17 @@ h1 {
 }
 
 /*===== ABOUT =====*/
-.about {
-  margin: 0 7rem 7rem 7rem !important;
+#about {
+  padding: 60px 0;
 }
-.about .story {
-  color: black;
-  font-size: 1rem;
+/*============= Login and Search =============*/
+.sign-content {
+  padding: 60px 0;
 }
 
-.about b {
-  font-size: 1.5rem;
-  font-weight: bold;
+.log-content {
+  padding: 60px 0;
 }
-/*============= SEARCH =============*/
 
 /*============= FOOTER =============*/
 footer {
