@@ -140,7 +140,7 @@ def results():
         description_url = f"https://api.foursquare.com/v2/venues/{venue_id}"
         description_results = requests.get(
             description_url, params=desc_params).json()
-        pp.pprint(description_results)
+        # pp.pprint(description_results)
         # Tries to get picture and description
         try:
             description = description_results['response']['venue'][
@@ -240,7 +240,7 @@ def login():
             return redirect(url_for('auth.signup'))
 
         # If the passwords do not match
-        if not bcrypt.check_password_hash(user['password'], password):
+        if bcrypt.check_password_hash(user['password'], password):
             flash('ERROR: Password is incorrect')
             return redirect(url_for('auth.login'))
 
@@ -252,4 +252,4 @@ def login():
 @auth.route('/logout', methods=['GET'])
 def logout():
     session.pop('email', None)
-    return redirect(url_for('auth,login'))
+    return redirect(url_for('auth.login'))
