@@ -164,6 +164,15 @@ def results():
     }
     return render_template('results.html', **context)
 
+@main.route('/delete', methods=['POST'])
+def delete():
+    """remove favorite from user"""
+    item = request.form.get('id')
+    mongo.db.favorites.delete_one(
+        {'_id' : ObjectId(item)}
+    )
+    return redirect(url_for('main.user'))
+
 
 ##########################################
 #             Auth Routes                #
