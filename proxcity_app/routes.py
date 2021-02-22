@@ -64,11 +64,11 @@ def about():
 def user():
     '''Display User Page'''
     if 'email' in session:
-        user = mongo.db.users.find_one({ 'email': session['email'] })
+        user = mongo.db.users.find_one({'email': session['email']})
 
         if request.method == "GET":
             # Query the db for favorites and user data
-            favorites = list(mongo.db.favorites.find({ 'user_id': user['_id'] }))
+            favorites = list(mongo.db.favorites.find({'user_id': user['_id']}))
             print(favorites)
             context = {
               'user': user,
@@ -240,7 +240,7 @@ def login():
             return redirect(url_for('auth.signup'))
 
         # If the passwords do not match
-        if bcrypt.check_password_hash(user['password'], password):
+        if not bcrypt.check_password_hash(user['password'], password):
             flash('ERROR: Password is incorrect')
             return redirect(url_for('auth.login'))
 
