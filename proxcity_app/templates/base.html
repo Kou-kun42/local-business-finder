@@ -45,6 +45,20 @@
               About
             </a>
           </li>
+          {% if 'email' in session and session['email'] is not none and session['email'] %}
+            <!-- User Route -->
+          <li class="nav-item">
+            <a href="{{ url_for('main.user') }}">
+              Favorites
+            </a>
+          </li>
+          <!-- Logout Route -->
+          <li class="nav-item">
+            <a href="{{ url_for('auth.logout') }}">
+              Logout
+            </a>
+          </li>
+          {% else %}
           <!-- Login Route -->
           <li class="nav-item">
             <a href="{{ url_for('auth.login') }}">
@@ -57,6 +71,7 @@
               Signup
             </a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
