@@ -94,11 +94,9 @@
                 </p>
                 <p class="card-text">{{ favorite.description }}</p>
                 <form action="/delete" method="POST">
-                  <input type="hidden" value="{{favorite._id}}" name="id">
-                <button type="submit" class="btn btn-primary">
-                  Remove
-                </button>
-              </form>
+                  <input type="hidden" value="{{favorite._id}}" name="id" />
+                  <button type="submit" class="btn btn-primary">Remove</button>
+                </form>
               </div>
             </div>
           </div>
