@@ -97,7 +97,9 @@ def results():
     query = request.args.get("search-query")
     city = request.args.get("city")
     zipcode = request.args.get("zipcode")
-
+    if not zipcode:
+        flash("Please enter a zipcode")
+        return render_template('home.html')
     # Looking up City and State using Ziptastic api
     zipurl = "http://ZiptasticAPI.com/" + str(zipcode)
     zip_json = requests.get(zipurl).json()
