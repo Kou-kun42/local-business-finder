@@ -24,6 +24,15 @@ h1 {
   color: black;
 }
 
+.modal-content{
+  background-color: #ff847ec7;
+}
+
+.modal-body li{
+  list-style: none;
+  color: white;
+}
+
 /*============= TOP BAR HEADER =============*/
 .top-bar {
   height: 2.8rem;
