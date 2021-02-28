@@ -54,5 +54,5 @@ python3 app.py
 
 # More Info
 For more information visit websites:
-> [FourSquare API Documentation](https://developer.foursquare.com/docs/places-api/)
+> [FourSquare API Documentation](https://developer.foursquare.com/docs/places-api/)<br>
 > [Ziptastic Documentation](http://ziptasticapi.com/)
