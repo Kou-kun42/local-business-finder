@@ -42,7 +42,10 @@ CLIENT_ID={Your foursquare Places API Client ID here}
 CLIENT_SECRET={Your foursquare Places API Client Secret here}
 
 MONGO_URI = {Your MongoAtlas Cluster URI here}
-SECRET_KEY={Your MongoAtlas Cluster SecretKey here}
+(You could use mongodb://localhost:27017/proxcity for dev purposes)
+
+SECRET_KEY={Your auth session secret key}
+(You must create a strong password manually)
 ```
 On a development server
 ```bash 
