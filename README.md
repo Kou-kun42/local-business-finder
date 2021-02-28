@@ -36,7 +36,14 @@ Run the following commands from your virtual environment to install the needed p
 ```bash 
 pip3 install -r requirements.txt
 ```
+Add a .env file to the root of the project directory with the following key names
+```bash
+CLIENT_ID={Your foursquare Places API Client ID here}
+CLIENT_SECRET={Your foursquare Places API Client Secret here}
 
+MONGO_URI = {Your MongoAtlas Cluster URI here}
+SECRET_KEY={Your MongoAtlas Cluster SecretKey here}
+```
 On a development server
 ```bash 
 # run
